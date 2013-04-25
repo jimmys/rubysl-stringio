@@ -1,4 +1,3 @@
-require File.expand_path('../../../spec_helper', __FILE__)
 require 'stringio'
 require File.expand_path('../shared/each_byte', __FILE__)
 
