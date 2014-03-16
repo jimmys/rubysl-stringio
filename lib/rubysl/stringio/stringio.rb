@@ -159,10 +159,10 @@ class StringIO
     if @append || pos == string.length
       string << str
       d.pos = string.length
-    elsif pos > string.bytesize
-      string[string.bytesize..pos] = "\000" * (pos - string.bytesize)
+    elsif pos > string.size
+      string[string.size..pos] = "\000" * (pos - string.size)
       string << str
-      d.pos = string.bytesize
+      d.pos = string.size
     else
       string[pos, str.length] = str
       d.pos += str.length
@@ -202,7 +202,7 @@ class StringIO
 
   def eof?
     d = @__data__
-    d.pos >= d.string.bytesize
+    d.pos >= d.string.size
   end
   alias_method :eof, :eof?
 
@@ -451,7 +451,7 @@ class StringIO
   end
 
   def size
-    @__data__.string.bytesize
+    @__data__.string.size
   end
   alias_method :length, :size
 
@@ -507,8 +507,8 @@ class StringIO
 
     char = Rubinius::Type.coerce_to char, Integer, :to_int
 
-    if pos > string.bytesize
-      string[string.bytesize..pos] = "\000" * (pos - string.bytesize)
+    if pos > string.size
+      string[string.size..pos] = "\000" * (pos - string.size)
       d.pos -= 1
       string[d.pos] = char
     elsif pos > 0
