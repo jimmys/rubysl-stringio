@@ -95,6 +95,7 @@ class StringIO
     encoding = external || Encoding.default_external
     @__data__.encoding = encoding
     @__data__.string.force_encoding(encoding)
+    self
   end
 
   def external_encoding
