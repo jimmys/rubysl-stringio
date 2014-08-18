@@ -30,5 +30,10 @@ ruby_version_is "1.9.2" do
       io.set_encoding nil
       io.string.encoding.should == Encoding::UTF_8
     end
+
+    it "returns self" do
+      io = StringIO.new
+      io.set_encoding(Encoding::UTF_8).should equal(io)
+    end
   end
 end
